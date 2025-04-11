@@ -26,7 +26,7 @@ const fetchDownloadUrl = async (progressURL: string): Promise<string | null> => 
     for (let i = 0; i < 100; i++) {
         const res: Response = await fetch(progressURL);
         const data = await res.json();
-        // console.log(`Attempt : ${i + 1}`, data);
+        console.log(`Attempt : ${i + 1}`, data);
         if (data.success === 1 && data.download_url) {
             return data.download_url;
         }
@@ -53,6 +53,7 @@ export const handleMessage = async (messageObj: TelegramMessage):Promise<string>
             // console.log(progResp);
             const downloadUrl = await fetchDownloadUrl(progResp.progress_url);
             if (downloadUrl) {
+                console.log(downloadUrl);
                 return downloadUrl;
             }else{
                 return "Video taking time. Try Again Later"
