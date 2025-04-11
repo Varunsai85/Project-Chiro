@@ -58,7 +58,7 @@ export const handleMessage = async (messageObj: TelegramMessage):Promise<string>
                 return "Video taking time. Try Again Later"
             }
         } else {
-            return "Arey Vachi na MG";
+            return "Provide me a youtube Link"
         }
     } catch (e: any) {
         console.error("Error in handle Message", e?.message);
