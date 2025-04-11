@@ -23,14 +23,14 @@ export interface TelegramMessage {
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const fetchDownloadUrl = async (progressURL: string): Promise<string | null> => {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 30; i++) {
         const res: Response = await fetch(progressURL);
         const data = await res.json();
         console.log(`Attempt : ${i + 1}`, data);
         if (data.success === 1 && data.download_url) {
             return data.download_url;
         }
-        await delay(1000);
+        await delay(500);
     }
     return null;
 }
