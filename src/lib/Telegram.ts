@@ -29,6 +29,7 @@ const fetchDownloadUrl = async (progressURL: string): Promise<string | null> => 
         console.log(`Attempt : ${i + 1}`, data);
         if (data.success === 1 && data.download_url) {
             return data.download_url;
+            break;
         }
         await delay(500);
     }
