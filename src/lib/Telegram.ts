@@ -47,7 +47,7 @@ export const handleMessage = async (messageObj: TelegramMessage):Promise<string>
                 default:
                     return "OOPS, that's a Wrong Command";
             }
-        } else if (text.startsWith("https") && text.includes("www.youtube.com")) {
+        } else if (text.startsWith("https") || text.includes("www.youtube.com")) {
             const progressResp: Response = await fetch(`${process.env.VIDEOAPI}${text}`);
             const progResp = await progressResp.json();
             // console.log(progResp);
